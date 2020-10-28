@@ -77,7 +77,9 @@ public class MainActivity extends AppCompatActivity implements PurchasesUpdatedL
     }
 
     private void setupBilldingClient() {
-        billingClient = BillingClient.newBuilder(this).setListener(this).build();
+        billingClient = BillingClient.newBuilder(this)
+                .enablePendingPurchases()
+                .setListener(this).build();
         billingClient.startConnection(new BillingClientStateListener() {
             @Override
             public void onBillingSetupFinished(BillingResult billingResult) {
